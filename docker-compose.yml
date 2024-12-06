@@ -1,0 +1,20 @@
+version: "3.9"
+services:
+  postgres:
+    image: "postgres:17"
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: rustweb
+      POSTGRES_USER: rustweb
+      POSTGRES_DB: rustweb
+    ports:
+      - 5433:5432
+  postgres_test:
+    image: "postgres:17"
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: rustweb_test
+      POSTGRES_USER: rustweb_test
+      POSTGRES_DB: rustweb_test
+    ports:
+      - 5434:5432
