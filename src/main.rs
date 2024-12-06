@@ -13,7 +13,6 @@ use api::whiskey_type_api::*;
 async fn main() -> std::io::Result<()> {
     HttpServer::new(|| {
         App::new()
-            // .app_data(tera)
             .service(create_whiskey_type)
     })
     .bind("127.0.0.1:8000")?

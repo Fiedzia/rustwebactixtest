@@ -4,10 +4,17 @@ use diesel::prelude::*;
 
 // use this struct to represent json to save a product
 
-#[derive(Queryable, Insertable, Serialize, Deserialize)]
+#[derive(Insertable, Serialize, Deserialize)]
 #[table_name = "whiskey_type"]
+pub struct WhiskeyTypeCreate {
+    pub name: String,
+    pub description: String,
+    pub annual_sale_in_liters: i64
+}
+
+#[derive(Queryable, Serialize, Deserialize)]
 pub struct WhiskeyType {
-    pub id: String,
+    pub id: i32,
     pub name: String,
     pub description: String,
     pub annual_sale_in_liters: i64

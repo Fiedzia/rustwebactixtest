@@ -31,7 +31,7 @@ fn db_connect() -> PgConnection {
 
 
 #[post("/whiskey_type/create")]
-pub async fn create_whiskey_type(whiskey_type_data: web::Json<WhiskeyType>) -> Result<HttpResponse> {
+pub async fn create_whiskey_type(whiskey_type_data: web::Json<WhiskeyTypeCreate>) -> Result<HttpResponse> {
 
     use crate::schema::whiskey_type::dsl::*;
 
@@ -59,15 +59,36 @@ mod tests {
     #[actix_web::test]
     async fn test_index_post() {
         let app = test::init_service(App::new().service(create_whiskey_type)).await;
-        let req = test::TestRequest::post().set_json(
-                WhiskeyType{
-                    id: "scotch".to_string(),
-                    name: "Scotch".to_string(),
-                    description: "Scotch whisky is the most exported whiskey worldwide, especially to markets like the U.S., France, and emerging markets in Asia.".to_string(),
-                    annual_sale_in_liters: 1_500_000_000
-                }
-            ).uri("/whiskey_type/create").to_request();
-        let resp = test::call_service(&app, req).await;
-        assert!(resp.status().is_success());
+
+        let whiskey_types = vec![
+            WhiskeyTypeCreate{
+                name: "Scotch".to_string(),
+                description: "Scotch whisky is the most exported whiskey worldwide, especially to markets like the U.S., France, and emerging markets in Asia.".to_string(),
+                annual_sale_in_liters: 1_500_000_000
+            },
+            WhiskeyTypeCreate{
+                name: "Irish".to_string(),
+                description: "Irish whiskey has been growing rapidly in recent years, driven by global popularity, especially in the U.S. and Europe.".to_string(),
+                annual_sale_in_liters: 100_000_000,
+            },
+            WhiskeyTypeCreate{
+                name: "Bourbon".to_string(),
+                description: "Bourbon is the most popular American whiskey, with strong demand both domestically and internationally, especially in markets like Europe and Asia.".to_string(),
+                annual_sale_in_liters: 240_000_000,
+            },
+            WhiskeyTypeCreate{
+                name: "Rye".to_string(),
+                description: "Rye whiskey has seen a resurgence, particularly in craft cocktails and premium markets.".to_string(),
+                annual_sale_in_liters: 30_000_000,
+            },
+        ];
+
+        for whiskey_type_ in whiskey_types {
+            let req = test::TestRequest::post().set_json(
+                    whiskey_type_
+                ).uri("/whiskey_type/create").to_request();
+            let resp = test::call_service(&app, req).await;
+            assert!(resp.status().is_success());
+        }
     }
 }

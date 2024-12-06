@@ -2,7 +2,7 @@
 
 diesel::table! {
     whiskey_type (id) {
-        id -> Varchar,
+        id -> Int4,
         name -> Varchar,
         description -> Text,
         annual_sale_in_liters -> Int8,
