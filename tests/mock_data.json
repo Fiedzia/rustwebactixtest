@@ -1,0 +1,22 @@
+[
+    {
+        "name": "Scotch",
+        "description": "Scotch whisky is the most exported whiskey worldwide, especially to markets like the U.S., France, and emerging markets in Asia",
+        "annual_sale_in_liters": 1500000000
+    },
+    {
+        "name": "Irish",
+        "description": "Irish whiskey has been growing rapidly in recent years, driven by global popularity, especially in the U.S. and Europe.",
+        "annual_sale_in_liters": 100000000
+    },
+    {
+        "name": "Bourbon",
+        "description": "Bourbon is the most popular American whiskey, with strong demand both domestically and internationally, especially in markets like Europe and Asia.",
+        "annual_sale_in_liters": 240000000
+    },
+    {
+        "name": "Rye",
+        "description": "Rye whiskey has seen a resurgence, particularly in craft cocktails and premium markets.",
+        "annual_sale_in_liters": 30000000
+    }
+]
