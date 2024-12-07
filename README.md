@@ -5,6 +5,22 @@ Usage:
 Tu run tests:
 
 ```sh
-    cp env .env
     ./run_test.sh
 ```
+
+To run app:
+
+```sh
+    ./run.sh
+```
+
+Go to http://localhost:8000/whiskey_type/
+
+
+To see data frame:
+
+```sh
+   cd cli
+   uv run cli.py
+```
+

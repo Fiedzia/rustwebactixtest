@@ -23,3 +23,8 @@ pub struct WhiskeyTypeResponse {
     pub status: String,
     pub data: Vec<WhiskeyType>,
 }
+
+#[derive(Serialize)]
+pub struct StatusResponse {
+    pub status: String,
+}
