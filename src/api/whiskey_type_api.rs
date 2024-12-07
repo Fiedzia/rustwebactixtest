@@ -16,7 +16,7 @@ fn db_connect() -> PgConnection {
 
     let db_url = std::env::var("DATABASE_URL").expect("Database Must Be Set");
 
-    PgConnection::establish(&db_url).expect(&format!("Error connecting to {}", &db_url))
+    PgConnection::establish(&db_url).unwrap_or_else(|_| panic!("Error connecting to {}", &db_url))
 }
 
 #[post("/whiskey_type/create")]
@@ -37,7 +37,7 @@ pub async fn create_whiskey_type(
 
 #[cfg(test)]
 mod tests {
-    use actix_web::{http::header::ContentType, test, App};
+    use actix_web::{test, App};
     use serde_json;
 
     use super::*;

@@ -2,10 +2,8 @@ use crate::schema::whiskey_type;
 use diesel::prelude::*;
 use serde::{Deserialize, Serialize};
 
-// use this struct to represent json to save a product
-
 #[derive(Insertable, Serialize, Deserialize)]
-#[table_name = "whiskey_type"]
+#[diesel(table_name=whiskey_type)]
 pub struct WhiskeyTypeCreate {
     pub name: String,
     pub description: String,
@@ -20,7 +18,6 @@ pub struct WhiskeyType {
     pub annual_sale_in_liters: i64,
 }
 
-// use this struct to respresent data on response
 #[derive(Serialize)]
 pub struct WhiskeyTypeResponse {
     pub status: String,
