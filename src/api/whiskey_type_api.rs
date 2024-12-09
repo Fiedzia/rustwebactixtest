@@ -99,7 +99,9 @@ mod tests {
         for chunk in &whiskey_type 
             .load_iter::<WhiskeyType, PgRowByRowLoadingMode>(&mut connection) 
             .unwrap() 
-            .chunks(1000) { 
+            .chunks(1000) {
+                //to create dataframe we need to convert data to something that 
+                //provides iterator over &Row.
                 let mut rows = vec![]; 
                 for item in chunk { 
                     let wt = item.unwrap(); 
@@ -117,9 +119,5 @@ mod tests {
         let lazy_df = result_df.lazy(); 
         //println!("{:#?}", lazy_df);  //doesn't work - no Debug implementation for LazyFrame
         println!("Plan: {:#?}", lazy_df.describe_plan().unwrap());
-
-
-
-
     }
 }
