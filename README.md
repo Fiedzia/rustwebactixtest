@@ -2,11 +2,13 @@
 
 Usage:
 
-Tu run tests:
+To run tests:
 
 ```sh
     ./run_test.sh
 ```
+One of the tests will display dataframe
+
 
 To run app:
 
@@ -17,10 +19,11 @@ To run app:
 Go to http://localhost:8000/whiskey_type/
 
 
-To see data frame:
+To see data frame(python):
 
 ```sh
    cd cli
    uv run cli.py
 ```
 
+You will need fairly recent docker (relevant for usage of docker compose)

@@ -10,7 +10,8 @@ pub struct WhiskeyTypeCreate {
     pub annual_sale_in_liters: i64,
 }
 
-#[derive(Queryable, Serialize, Deserialize)]
+#[derive(Queryable, PartialEq, Debug, Serialize, Deserialize)]
+#[diesel(table_name=whiskey_type)]
 pub struct WhiskeyType {
     pub id: i32,
     pub name: String,

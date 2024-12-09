@@ -5,4 +5,4 @@ sleep 2
 cp env.test .env
 diesel migration revert --all
 diesel migration run
-cargo test
+cargo test --  --nocapture
